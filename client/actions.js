@@ -30,3 +30,23 @@ export function getFish () {
       .catch(err => dispatch(getFishError(err.message)))
   }
 }
+
+export function getSortedFish () {
+  return dispatch => {
+    dispatch(getFishPending())
+
+    request
+      .get('/api/v1/fish')
+      .then(res => {
+        const sortedFish = res.body.sort((a, b) => {
+          if (a.name < b.name) return -1
+          if (a.name > b.name) return 1
+          return 0
+        })
+        res.body = sortedFish
+        return res
+      })
+      .then(res => dispatch(getFishSuccess(res.body)))
+      .catch(err => dispatch(getFishError(err.message)))
+  }
+}
