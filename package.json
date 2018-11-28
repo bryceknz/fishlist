@@ -9,6 +9,7 @@
   "scripts": {
     "client": "webpack-dev-server --hot --inline",
     "dev": "node server & webpack --watch",
+    "postinstall": "knex migrate:latest && knex seed:run",
     "server": "node server",
     "start": "webpack && node server",
     "test": "jest --watchAll"
