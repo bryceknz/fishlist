@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { getFish } from '../actions'
+import { getFish, getSortedFish } from '../actions'
 import Fish from './Fish'
 
 class FishList extends React.Component {
@@ -21,6 +21,7 @@ class FishList extends React.Component {
           {this.props.fish.map(fish =>
             <Fish key={fish.id} fishData={fish} />)}
         </ul>
+        <button onClick={() => this.props.getSortedFish()}>Sort fish</button>
       </React.Fragment>
     )
   }
@@ -35,7 +36,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getFish: () => dispatch(getFish())
+    getFish: () => dispatch(getFish()),
+    getSortedFish: () => dispatch(getSortedFish())
   }
 }
 
