@@ -1,7 +1,7 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
-import { getFish, getSortedFish } from '../actions'
+import {getFish, getSortedFish} from '../actions'
 import Fish from './Fish'
 
 class FishList extends React.Component {
